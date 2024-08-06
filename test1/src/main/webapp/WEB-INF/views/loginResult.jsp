@@ -7,13 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<a href="/test"> 페이지 이동 </a>
 
-	<h1> 나는 login </h1>
-
-	<form method="post" action="/login">
-		아이디 : <input type="text" name="id">
-		비밀번호 : <input type="password" name="pw">
-		<button>로그인</button>
-	</form>
 </body>
 </html>

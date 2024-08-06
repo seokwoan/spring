@@ -1,9 +1,15 @@
 package com.example.test1.control;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.test1.DTO.LoginDto;
+import com.example.test1.DTO.MemberDTO;
 
 
 @Controller
@@ -38,16 +44,67 @@ public class MainController {
 		return "member/signUp";
 	}
 	
-	@PostMapping( "/signUp" )
-	public String signUpSave( @RequestParam( "id" ) String id , @RequestParam( "pw" ) String pw , @RequestParam( "tel" ) String tel , @RequestParam( "birth") String birth ) {
+	@GetMapping( "/login" )
+	public String login() {
+		return "login";
+	}
+	
+	
+	@PostMapping( "/login" )
+	public String loginResult( @ModelAttribute LoginDto logindto ) {
 		
-		System.out.println( id );
-		System.out.println( pw );
-		System.out.println( tel );
-		System.out.println( birth );
+		System.out.println( "입력한 아이디 : " + logindto.getId() );
+		System.out.println( "입력한 비밀번호 : " + logindto.getPw() );
+		
+		return "loginResult";
+	}
+
+
+	// form 데이터 받아오는 방법1
+//	@PostMapping( "/signUp" )
+//	public String signUpSave( @RequestParam( "id" ) String id , @RequestParam( "pw" ) String pw , @RequestParam( "tel" ) String tel , @RequestParam( "birth") String birth ) {
+//		
+//		System.out.println( id );
+//		System.out.println( pw );
+//		System.out.println( tel );
+//		System.out.println( birth );
+//		
+//		return "member/signUp";
+//	}
+	// 입력받는 변수가 많으면 매개변수가 늘어남
+	
+	
+	// form 데이터 받아오는 방법2
+//	@PostMapping( "/signUp" )
+//	public String signUpSave( @ModelAttribute MemberDTO memberDto ) {
+//								// @ModelAttribute 애노테이션으로 request를 통해 받은 값을 객체에 넣어줌
+//		System.out.println( memberDto.getId());
+//		
+//		return "member/signUp";
+//	}
+	// 데이터 베이스 저장에 가장 좋은 방법
+	
+	// form 데이터 받아오는 방법3 -> 범용성이 넓다 / 데이터베이스 저장이 까다롭다
+	@PostMapping( "/signUp" )
+	public String signUpSave( @RequestParam Map< String , String > pm ) {
+		
+		System.out.println( "세번째 방법 : " + pm.get( "id" ) );
 		
 		return "member/signUp";
 	}
+	
+	// form 데이터 받아오기 실습
+	// 내용 : 로그인을 위해 로그인 페이지에서 아이디와 비밀번호를 입력하고 로그인 버튼을 클릭한다
+	// DTO 클래스 : LoginDto
+	// 뷰 페이지	: login.jsp - 로그인 form페이지
+	//			: loginResult.jsp - 로그인 후 보여줄 페이지
+	// loginResult.jsp에 <a href="/test"> 페이지 이동 </a> 넣기
+	
+	// 요청 주소 및 방식 :	로그인페이지 - GET방식, /login
+	// 					로그인처리 - POST방식, /login
+	
+	
+	
 	
 	
 	// 주소 요청 : /signUp
@@ -57,7 +114,10 @@ public class MainController {
 }
 
 
-
+// 자바빈	: 클래스의 인스턴스 변수는 input의 name과 일치시켜준다
+//		: 클래스의 기본 생성 메서드가 필요하다
+//		: 인스턴스변수의 get, set 메서드
+//		: 인스턴스변수의 제어자는 private
 
 
 
