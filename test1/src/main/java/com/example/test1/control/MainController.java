@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.example.test1.DTO.BoardViewDTO;
 import com.example.test1.DTO.LoginDto;
 import com.example.test1.DTO.MemberDTO;
 
@@ -27,6 +29,17 @@ public class MainController {
 	// @Controller 클래스에 지정
 	// 요청방식에 따른 주소 맵핑 -> @GetMapping("/") 요청주소 처리할 메서드 정의와 반환값으로 보여줄 페이지 이름
 	// @PostMapping("/")
+	
+	
+	@GetMapping( "/" )
+	public ModelAndView home() {
+		String title = "이번 여름 바닷가는 다녀오셨습니까?";
+		ModelAndView me = new ModelAndView(); //modelAndWivew객체를 만드다
+		me.setViewName( "index" );
+		me.addObject( "pageTitle" , title );
+		return me;
+	}
+	
 
 	@GetMapping("/test") // Controller로 등록된 클래스에서 직접 매핑해줌
 						 // JSP에서처럼 web.xml맵핑, 서블렛 등을 만들지 않아도 됨
@@ -51,7 +64,7 @@ public class MainController {
 	
 	
 	@PostMapping( "/login" )
-	public String loginResult( @ModelAttribute LoginDto logindto ) {
+	public String login( @ModelAttribute LoginDto logindto ) {
 		
 		System.out.println( "입력한 아이디 : " + logindto.getId() );
 		System.out.println( "입력한 비밀번호 : " + logindto.getPw() );
@@ -103,13 +116,11 @@ public class MainController {
 	// 요청 주소 및 방식 :	로그인페이지 - GET방식, /login
 	// 					로그인처리 - POST방식, /login
 	
-	
-	
-	
-	
+
 	// 주소 요청 : /signUp
 	// 뷰 페이지 : member/signUp.jsp
 	// 뷰 페이지 내용 : 아이디, 비밀번호, 연락처, 생년월일 입력
+	
 	
 }
 
