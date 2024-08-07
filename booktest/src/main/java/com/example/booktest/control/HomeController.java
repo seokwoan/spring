@@ -3,10 +3,13 @@ package com.example.booktest.control;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.booktest.DTO.AccountDTO;
 import com.example.booktest.DTO.InfoDTO;
-import com.example.booktest.DTO.bookDTO;
+import com.example.booktest.DTO.BookinfoDTO;
 
 @Controller
 public class HomeController {
@@ -39,12 +42,27 @@ public class HomeController {
 	}
 	
 	@GetMapping( "/detail" )
-	public ModelAndView book( @ModelAttribute bookDTO bookDto ) {
+	public ModelAndView book( @ModelAttribute BookinfoDTO bookDto ) {
 		ModelAndView book = new ModelAndView( "bookDetail" );
 		
 		book.addObject( "book" , bookDto );
 		
 		return book;
+	}
+	
+	@GetMapping( "/input" )
+	public String bank() {
+		return "bank";
+	}
+	
+	@PostMapping( "/result" )
+	public ModelAndView bank( @ModelAttribute AccountDTO ac ) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject( "ac" , ac );
+		
+		return mv;
+		
 	}
 	
 }

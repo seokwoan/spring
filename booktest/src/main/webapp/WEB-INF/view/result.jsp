@@ -8,8 +8,7 @@
 </head>
 <body>
 
-	제목 : ${book.getTitle() }
-	출판사 : ${book.getPublisher() }
+	<h1>잔액 : ${ac.getBankMoney() }</h1>
 
 </body>
 </html>

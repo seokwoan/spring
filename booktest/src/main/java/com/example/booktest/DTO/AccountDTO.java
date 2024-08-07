@@ -5,10 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class bookDTO {
+public class AccountDTO {
 
-	private String title;
-	private String author;
-	private String publisher;
-	
+	private String bankName;
+	private String bankMoney;
 }

@@ -8,8 +8,12 @@
 </head>
 <body>
 
-	제목 : ${book.getTitle() }
-	출판사 : ${book.getPublisher() }
+	<form method="post" action="/result">
+		은행 : <input type="text" name="bankName"><br>
+		잔액 : <input type="text" name="bankMoney"><br>
+		<button>등록</button>
+	
+	</form>
 
 </body>
 </html>
