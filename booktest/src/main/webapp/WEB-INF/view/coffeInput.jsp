@@ -14,9 +14,9 @@
 <body>
 
 	<form method="post" action="/coffeEnroll">
-		커피 : <input type="text" name="coffe">
-		가격 : <input type="number" name="price">
-		디카페인 : <input type="number" name="decaffein">
+		커피 : <input type="text" name="coffe"><br>
+		가격 : <input type="number" name="price"><br>
+		디카페인 : <input type="number" name="decaffein"><br>
 		<button>등록</button>
 	</form>
 
