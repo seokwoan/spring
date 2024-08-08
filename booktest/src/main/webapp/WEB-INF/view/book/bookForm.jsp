@@ -32,7 +32,7 @@
 				
 				<div class="inputField">
 					<label for="bookCost">가격</label>
-					<input type="text" name="bookCost" id="bookCost">
+					<input type="number" name="bookCost" id="bookCost">
 				</div>
 				
 				<div class="inputField">

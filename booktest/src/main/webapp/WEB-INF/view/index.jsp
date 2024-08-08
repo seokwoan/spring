@@ -17,6 +17,14 @@
 
 <body>
 
+	<a href="/coffeReg">커피등록</a>
+	<!-- 
+		컨트롤 : CoffeControl
+		서비스 : CoffeService
+		DTO : CoffeDto
+		DAO : CoffeDao
+	 -->
+
 	<div id="wrap">
 		<h2>도서관</h2>
 		
