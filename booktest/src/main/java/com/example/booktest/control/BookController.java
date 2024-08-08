@@ -1,5 +1,7 @@
 package com.example.booktest.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,9 @@ public class BookController {
 	@GetMapping( "/" )
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView( "index" );
+		
+		List<BookDTO> list = bookService.selcetAll();
+		mv.addObject( "list" , list );
 		
 		return mv;
 		

@@ -1,5 +1,7 @@
 package com.example.booktest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,16 @@ public class BookService {
 		this.bookDao = bookDao;
 	}
 	
-	// 도서 정보 
+	
+	// 도서정보 데이터베이스에서 가져온 데이터가 저장된 List를 control에 넘겨주기 
+	public List<BookDTO> selcetAll(){
+		return bookDao.select();
+		
+	}
+	
+	
+	
+	// 도서 정보 저장
 	public void bookSave( BookDTO bookDto ) {
 		if( bookDto != null ) {
 			// 도서 코드가 이미 데이터베이스에 저장 되어 있는지 확인 후 저장

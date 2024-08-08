@@ -1,5 +1,7 @@
 package com.example.booktest.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +18,23 @@ public class CoffeControl {
 	@Autowired
 	private CoffeService csv;
 	
-	@GetMapping("/coffeReg")
+	@GetMapping( "/coffe" )
+	public ModelAndView home() {
+		
+		ModelAndView mv = new ModelAndView( "/coffe/index" );
+		
+		List<CoffeDto> list = csv.selcetAll();
+		mv.addObject( "list" , list );
+		
+		return mv;
+	}
+	
+	
+	
+	
+	@GetMapping( "/coffeReg" )
 	public String coffe() {
-		return "coffeInput";
+		return "coffe/coffeInput";
 	}
 	
 	@PostMapping( "/coffeEnroll" )
@@ -26,11 +42,15 @@ public class CoffeControl {
 		
 		csv.save( cdt );
 		
-		return "index";	
+		return "redirect:/coffe"; 
+		// sendRedirect를 실행하는 문자열 "redirect:/(주소)"
+		// 등록 후에 Mapping된 주소가 유지되는 forward방식이 아닌 이동한 페이지의 주소가 나오는 redirect방식 
 	}
 }
 
-
+//@Controller 애노테이션을 붙여줘야 class가 controller의 역할을 함
+//@Service 애노테이션을 붙여줘야 class가 service의 역할을 함
+//@Repository 애노테이션을 붙여줘야 class가 데이터베이스와 관련된 스프링프레임워크를 사용할 수 있다
 
 
 

@@ -1,7 +1,12 @@
 package com.example.booktest.DAO;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.example.booktest.DTO.BookDTO;
@@ -21,6 +26,15 @@ public class BookDAO {
 		this.jt = jdbcTemplate;
 	}
 	
+	// book 테이블 전체 데이터 가져오기 - 첫화면에 목록으로 출력하기 위해
+	public List<BookDTO> select(){
+		String sql = "select * from book";
+		
+		List<BookDTO> list = jt.query( sql , new BookDTORowMapper() );
+	
+		return list;
+	}
+	
 	public void insert( BookDTO bookDto ) { // 도서정보 데이터 베이스 저장
 		String sql = "insert into book( book_title , book_author , book_cost , book_page , publisher ) "
 				+ "values( ? , ? , ? , ? , ? )";
@@ -28,4 +42,23 @@ public class BookDAO {
 		jt.update( sql , bookDto.getBookTitle() , bookDto.getBookAuthor() , bookDto.getBookCost(), bookDto.getBookPage(), bookDto.getPublisher() );
 		// update method를 이용해서 sql문의 value를 넣어준다
 	}
+	
+	public class BookDTORowMapper implements RowMapper<BookDTO>{
+		// jdbc template은 데이터베이스에서 가져온 데이터를 객체에 저장해주는 작업을 해줘야한다
+		
+		@Override
+		public BookDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+			BookDTO bdt = new BookDTO();
+			bdt.setBookAuthor( rs.getString( "book_author" ) );
+			bdt.setBookCost( rs.getInt( "book_cost" ) );
+			bdt.setBookPage( rs.getInt( "book_page" ) );
+			bdt.setBookTitle( rs.getString( "book_title" ) );
+			bdt.setPublisher( rs.getString( "publisher" ) );
+			bdt.setBookId( rs.getInt( "book_id" ) );
+			
+			return bdt;
+		}
+		
+	}
+
 }

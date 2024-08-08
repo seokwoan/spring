@@ -1,5 +1,7 @@
 package com.example.booktest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,14 @@ public class CoffeService {
 	}
 	
 	public void save( CoffeDto cdt ) {
-		cda.insert( cdt );
+		if( cdt != null ) {
+			cda.insert( cdt );
+		}	
+	}
+	
+	public List<CoffeDto> selcetAll(){
+		return cda.select();
+		
 	}
 
 }
