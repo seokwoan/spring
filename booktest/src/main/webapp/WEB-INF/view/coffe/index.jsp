@@ -31,7 +31,9 @@
 			<ul id="bookList">
 				<c:forEach var="row" items="${list}">
 					<li class="bList">
-						<span class="itemName">${row.getCoffe() }</span>
+						<span class="itemName">
+							<a href="/coffe/view?menu=${row.getCoffeId() }">${row.getCoffe() }</a>
+						</span>
 						<span class="price">${row.getPrice() }</span>
 						<span class="decaffein">${row.decaffein }</span>
 					</li>

@@ -60,5 +60,38 @@ public class BookDAO {
 		}
 		
 	}
+	
+	
+	// 도서 상세 정보 가져오기 - 1권에 대해서만 ( book_id 컬럼으로 조회)
+	// book_id 컬럼이 중복데이터를 가질수 없는 유일값( primary key)이기 때문에
+	
+	
+	public BookDTO findId( int id ) {
+		
+		String sql = "select * from book where book_id=?";
+		
+		
+		// jt.queryForObject( sql문 , mapper , ?에 넣어줄 값 );
+		BookDTO data= jt.queryForObject( sql , 
+				new RowMapper<BookDTO>() {
+					@Override
+					public BookDTO mapRow( ResultSet rs , int rowNum ) throws SQLException{
+						BookDTO dto = new BookDTO();
+						dto.setBookAuthor( rs.getString( "book_author" ) );
+						dto.setBookCost( rs.getInt( "book_cost" ) );
+						dto.setBookPage( rs.getInt( "book_page" ) );
+						dto.setBookTitle( rs.getString( "book_title" ) );
+						dto.setPublisher( rs.getString( "publisher" ) );
+						dto.setBookId( rs.getInt( "book_id" ) );
+						
+						return dto;
+					}
+				}
+				
+				, id );
+		
+		return data;
+		
+	}
 
 }

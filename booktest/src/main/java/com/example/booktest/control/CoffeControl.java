@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.booktest.DTO.CoffeDto;
@@ -46,6 +47,19 @@ public class CoffeControl {
 		// sendRedirect를 실행하는 문자열 "redirect:/(주소)"
 		// 등록 후에 Mapping된 주소가 유지되는 forward방식이 아닌 이동한 페이지의 주소가 나오는 redirect방식 
 	}
+	
+	
+	@GetMapping( "/coffe/view" )
+	public ModelAndView view( @RequestParam( value="menu" , required=false , defaultValue="0" ) int id ) {
+		
+		CoffeDto cdt = csv.menuView( id );
+		if( cdt == null ) {
+			cdt = new CoffeDto();
+		}
+		
+		return new ModelAndView( "coffe/view" ).addObject( "menu" , cdt );
+	}
+	
 }
 
 //@Controller 애노테이션을 붙여줘야 class가 controller의 역할을 함

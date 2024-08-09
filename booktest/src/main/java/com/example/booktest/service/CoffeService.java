@@ -28,5 +28,14 @@ public class CoffeService {
 		return cda.select();
 		
 	}
+	
+	public CoffeDto menuView( int id ) {
+		if( id != 0 ) {
+			return cda.menuView( id );
+		}
+		return null;
+	}
+	
+	
 
 }

@@ -24,9 +24,7 @@ public class BookService {
 		return bookDao.select();
 		
 	}
-	
-	
-	
+
 	// 도서 정보 저장
 	public void bookSave( BookDTO bookDto ) {
 		if( bookDto != null ) {
@@ -35,4 +33,42 @@ public class BookService {
 		}
 	}
 
+	// 도서 상세 정보 가져오기 - id 파라미터값을 DAO에 넘겨서 조회하고 싶은 결과를 받아 control에 넘김
+	public BookDTO getBook( int id ) {
+		if( id != 0 ) { // id 파라미터값이 존재한다면 DAO를 통해 조회
+			return bookDao.findId( id );
+		}
+		return null; // id 파라미터값 없이 주소요청이 들어온다면 null값을 반환 -> 조회 불가
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -57,6 +57,32 @@ public class CoffeDao {
 		}
 		
 	}
+	
+	
+	public CoffeDto menuView( int id ) {
+		
+		String sql = "select * from coffe where coffe_id=?";
+		
+		CoffeDto cdt = jt.queryForObject( sql , 
+				new RowMapper<CoffeDto>() {
+					@Override
+					public CoffeDto mapRow( ResultSet rs , int rowNum ) throws SQLException{
+						CoffeDto coffeDto = new CoffeDto();
+						coffeDto.setCoffeId( rs.getInt( "coffe_id") );
+						coffeDto.setCoffe( rs.getString("item_name" ) );
+						coffeDto.setPrice( rs.getInt( "price") );
+						coffeDto.setDecaffein( rs.getInt( "decaffein" ) );
+						
+						return coffeDto;
+					}
+			
+				}
+				, id );
+		return cdt;
+		
+	}
+	
+	
 }
 
 
