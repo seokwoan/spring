@@ -93,5 +93,20 @@ public class BookDAO {
 		return data;
 		
 	}
+	
+	// 도서 삭제
+	public void delete( int bid ) {
+		String sql = "delete from book where book_id=?";
+	
+		jt.update( sql , bid );		
+	}
+
+	// 수정한 도서의 정보를 데이터베이스에 수정하여 저장
+	public void update(BookDTO bookDto) {
+		String sql = "update book set book_title=? , book_author=? , book_cost=? , book_page=? , publisher=? where book_id=?";
+		
+		jt.update( sql , bookDto.getBookTitle(), bookDto.getBookAuthor() , bookDto.getBookCost() , bookDto.getBookPage() , bookDto.getPublisher() , bookDto.getBookId() );
+		
+	}
 
 }

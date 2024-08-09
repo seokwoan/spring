@@ -60,6 +60,14 @@ public class CoffeControl {
 		return new ModelAndView( "coffe/view" ).addObject( "menu" , cdt );
 	}
 	
+	@GetMapping( "/coffe/delete" )
+	public String menuDel( @RequestParam( "id" ) int id ) {
+		csv.menuDel( id );
+		
+		return "redirect:/coffe"; 
+	}
+	
+	
 }
 
 //@Controller 애노테이션을 붙여줘야 class가 controller의 역할을 함

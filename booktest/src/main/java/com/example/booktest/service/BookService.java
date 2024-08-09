@@ -41,34 +41,15 @@ public class BookService {
 		return null; // id 파라미터값 없이 주소요청이 들어온다면 null값을 반환 -> 조회 불가
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 도서 삭제
+	public void remove( int bid ) {
+		bookDao.delete( bid );
+	}
+
+	// 도서 수정
+	public void update(BookDTO bookDto) {
+		bookDao.update( bookDto );
+		
+	}	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -66,28 +66,22 @@ public class BookController {
 		return new ModelAndView( "book/view" ).addObject( "book" , data );
 	}
 	
+	// 도서 삭제
+	@GetMapping( "/book/delete" )
+	public String bookRemove( @RequestParam( "id" ) int bid ) {
+		bookService.remove( bid );
+		return "redirect:/"; // redirect는 주소가 바뀜
+//		return "<script> alert('삭제되었습니다'); location.href='/'; <script>";
+	}
+	
+	
+	// 도서 수정
+	@GetMapping( "/book/update" )
+	public String bookUpdate( @ModelAttribute BookDTO bookDto , @RequestParam( "id" ) int id ) {
+		bookDto.setBookId( id );
+		bookService.update( bookDto );
+		
+		return "redirect:/book/view?id=" + id; // 도서 상세페이지 이동
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

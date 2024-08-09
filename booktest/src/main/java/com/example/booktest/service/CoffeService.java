@@ -36,6 +36,9 @@ public class CoffeService {
 		return null;
 	}
 	
+	public void menuDel( int id ) {
+		cda.menuDel( id );
+	}
 	
 
 }
