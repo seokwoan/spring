@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게임톡톡</title>
+
+<link rel="stylesheet" href="/css/default.css">
+
+</head>
+<body>
+
+	<div id="wrap">
+	
+		<div id="header">
+		
+			<div id="navi">
+			
+				<ul id="menuList"></ul>
+				
+				<div id="userAlogo">
+					<div class="uesrBox">
+						<span class="loginLink">
+							<a th:href="@{/game/login}">로그인</a>
+						</span>
+						
+						<span class="userService">고객센터</span>
+						
+					</div>
+
+					<div class="logo"></div>
+				</div>
+			
+			</div>	
+
+		</div>
+	
+		<div id="main"></div>
+	
+	
+	</div>
+
+</body>
+</html>
