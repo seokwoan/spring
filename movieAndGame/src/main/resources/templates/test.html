@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<!--  xmlns:(이름)="주소" 
+			변수명을 정하듯 이름을 정해줌 = 사용할 템플릿의 주소 			
+-->
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+	<h1>thymeleaf 엔진 적용 페이지</h1>
+
+	<style> .aaa{ color : red; }</style>
+	<div th:text="${name}"></div>
+	<!-- thymeleaf를 이용해 값을 표시하는 방법
+		설정한 xmlns 이름:text="EL표시" -> 태그 안의 text를 설정
+	 -->
+	<div th:class="aaa">이순신</div>
+
+	<table th:object="${member}">
+	<!--   th:object=${이름} 컨트롤에서 받아온 객체를 설정 -->
+		<tr>
+			<td>이름</td><td th:text="*{name}"></td>
+			<!-- table태그에 object로 객체를 설정해줘 ${member.name} -> $*{name}으로 사용가능 
+				table태그에 설정한 object라는 뜻으로 *을 붙여서 사용함
+			-->
+		</tr>
+		
+		<tr>
+			<td>연락처</td><td th:text="*{tel}"></td>
+		</tr>
+		
+		<tr>
+			<td>나이</td><td th:text="*{age}"></td>
+		</tr>
+		
+		<tr>
+			<td>이메일</td><td th:text="*{email}"></td>
+		</tr>	
+				
+	</table>	
+	
+	<form th:object="${member}">
+		<input th:field="*{name}">
+		<input th:field="*{age}">
+		<input th:field="*{tel}">
+		<input th:field="*{email}">
+		<!-- th:field를 사용하면 id, name을 변수와 똑같이 만들고 vulue에 변수 값을 저장해줌 -->
+	</form>
+	
+	<ul>
+		<li th:each="a : ${animal}" th:text="${a}"></li>
+		<!-- 반복할 태그에 th:each를 해줘야한다 each뒤에 th:text="${each에 사용한 변수이름}을 입력해 출력 -->	
+	</ul>
+	
+	
+</body>
+
+</html>
+
+<!-- 
+	thymeleaf 문법과 표현식
+	
+	${} : 변수 - Model 또는 ModelAndView로 지정한 name만 사용가능
+	
+	*{} : 선택변수	 -	member라는 객체에 age, tel 변수를 출력하려면 ${member.age}, ${member.tel}로
+					변수를 입력해야 하지만
+					<div th:object="${member}>
+						<div th:text="*{age}>
+					</div>
+					로 부모 태그에 object로 설정해주면 자식 태그에는 선택 변수로 *{age}로 입력가능
+					
+	@{} : url링크 표현식 - 	<a href="/test">테스트페이지</a>
+						<a th:href="@{/test}">테스트페이지</a> 변수에의해 url링크가 변하게 하려면
+						@를 사용
+						
+	#{} : 메세지 , properties의 값을 표현할때 사용 
+	
+	th:each 반복문
+		thymeleaf의 반복문, 자바의 for( int num : numbers ) 의 동작이다.
+		
+		item에 배열 또는 컬렉션프레임워크 객체가 담겨있다면 
+		<div>
+			<b th:each:"data : ${item}" th:text="${data}></b>
+		</div>
+		
+		위와 같은 방법으로 사용해야 한다
+		반복할 태그에 직접 each를 작성해야 한다.
+	
+ -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
