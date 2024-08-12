@@ -60,6 +60,57 @@
 		<!-- 반복할 태그에 th:each를 해줘야한다 each뒤에 th:text="${each에 사용한 변수이름}을 입력해 출력 -->	
 	</ul>
 	
+	<div th:if="${ member.age > 20 }">
+		성인 입니다.
+		
+	</div>
+	<!-- th:if와 th:unless의 조건문이 같아야 참일때 if실행 , 거짓일때 unless가 실행된다. 
+	조건식이 같아야 if와 unless가 하나의 구문으로 인식되어 둘 중 하나의 값만 출력됨
+	조건식이 다르면 if와 unless가 별개의 구문으로 인식되어 if 실행, unless가 실행된다
+	unless는 조건식이 거짓일때 실행되므로 if와 unless의 조건식이 같아야한다
+	-->
+	<div th:unless="${ member.age > 20 }">
+		청소년 입니다.
+	
+	</div>
+	
+	<h1 th:text="${ member.age >= 20 ? '성인' : '미성년자' }"></h1>
+	
+	<!-- 
+	
+		switch( 11 ) {
+			case 3 : 내용 break;
+			case 5 : 내용 break;
+			case 11 : 내용 break;
+			case 20 : 내용 break;		
+		}	
+	 
+	 -->
+	 
+	<div th:switch="${ name }">
+	 	<p th:case="김유신">신라장수</p>
+	 	<p th:case="최영">고려장수</p>
+	 	<p th:case="이순신">조선장수</p>
+	 	<p th:case="계백">백제장수</p>
+	 	<!-- th:case는 case의 경우만 출력 break가 필요없음 -->
+	</div>
+	 
+	<div th:text="${tag}"></div>
+	<div th:utext="${tag}"></div>
+	<!-- th:text는 태그가 적용되지 않고 그대로 출력, th:utext는 태그가 적용되어 출력 -->
+	
+	<div th:with="num=100">
+		<span th:text="${num}"></span>		
+	</div>
+	<p th:text="${num}"></p>
+	<!-- div태그와 그 하위태그인 span에서는 변수num사용가능 p태그는 div태그와 형제 관계여서 사용 불가 -->
+	
+	<!--/* <p th:text="${name}"></p> */-->
+	<!-- aa<p th:text="${name}"></p> -->
+	<!-- 
+		타임리프가 쓰인 태그에 주석을 걸때는 타임이프 주석을 이용해야 한다. 
+		html주석을 이용해서 주석처리를 하면 콘솔창에 주석이 그대로 나타나 보안이 취약하다
+	  -->
 	
 </body>
 
@@ -83,7 +134,7 @@
 						
 	#{} : 메세지 , properties의 값을 표현할때 사용 
 	
-	th:each 반복문
+	반복문 th:each
 		thymeleaf의 반복문, 자바의 for( int num : numbers ) 의 동작이다.
 		
 		item에 배열 또는 컬렉션프레임워크 객체가 담겨있다면 
@@ -94,6 +145,27 @@
 		위와 같은 방법으로 사용해야 한다
 		반복할 태그에 직접 each를 작성해야 한다.
 		
+	조건문 th:if , th:unless , th:switch , 삼항연산자( 조건연산자 )	
+		
+		num = 10; 이라면
+		<p th:if="${ num > 5 }"> 5보다 크다 </p>
+		<p th:unless="${ num > 5 }"> 5보다 작다 </p>
+		
+		th:if는 조건식이 참일경우에 실행, th:unless는 조건식이 거짓일 경우에 실행	
+		
+	출력방법 -	th:text:="${변수명 }"	
+			th:utext="${변수명}" - untext 텍스트가 아닌 html태그로 동작할 수 있다.
+			th:value="${변수명}" - input태그, select태그에 사용된다.
+			
+	변수 th:with
+		뱐수를 생성하고 값 저장방법
+		th:with를 통해 생성된 변수는 사용범위가 제한적이다
+		생성된 태그의 하위 태그에서만 가능하다
+		<div th:with="num=100">
+			<span th:text="${num}"></span>		
+		</div>
+		
+	내부 주석 <!--/* */-->	
  -->
  
  

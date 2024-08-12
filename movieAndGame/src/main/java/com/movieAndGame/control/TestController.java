@@ -36,6 +36,7 @@ public class TestController {
 		animal.add( "호랑이" );
 		animal.add( "코끼리" );
 		
+		model.addAttribute( "tag" , "<h1>타임리프</h1>" );
 		model.addAttribute( "name" , name );
 		model.addAttribute( "animal" , animal );
 		
