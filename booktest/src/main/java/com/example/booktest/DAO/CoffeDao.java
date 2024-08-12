@@ -82,11 +82,20 @@ public class CoffeDao {
 		
 	}
 	
-	public void menuDel( int id ) {
+	public void menuDel( int menu ) {
 		String sql = "delete from coffe where coffe_id=?";
 		
-		jt.update( sql , id );
+		jt.update( sql , menu );
 		
 	}
+	
+	
+	public void update(CoffeDto coffeDto) {
+		String sql = "update coffe set item_name=? , price=? , decaffein=? where coffe_id=?";
+		
+		jt.update( sql , coffeDto.getCoffe(), coffeDto.getPrice() , coffeDto.getDecaffein() , coffeDto.getCoffeId() );
+		
+	}
+	
 
 }

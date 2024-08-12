@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.booktest.DAO.CoffeDao;
+import com.example.booktest.DTO.BookDTO;
 import com.example.booktest.DTO.CoffeDto;
 
 @Service
@@ -36,9 +37,13 @@ public class CoffeService {
 		return null;
 	}
 	
-	public void menuDel( int id ) {
-		cda.menuDel( id );
+	public void menuDel( int menu ) {
+		cda.menuDel( menu );
 	}
 	
 
+	public void update( CoffeDto coffeDto ) {
+		cda.update( coffeDto );
+		
+	}	
 }

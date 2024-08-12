@@ -28,7 +28,7 @@
 <body>
 
 	<form id="fm" method="get" action="/coffe/delete">
-		<input type="hidden" name="id" value="${menu.coffeId }">
+		<input type="hidden" name="menu" value="${menu.coffeId }">
 		<!-- 같은 스크립트 파일을 가지므로 form태그의 액션과 hidden input의 value를 서로 다르게 넣어 같은 스크립트의
 			 같은 함수를 사용해도 서로 다른 컨트롤로 작동함
 		 -->
@@ -57,7 +57,7 @@
 				<tr>
 					<td colspan="2">
 						<button type="button" id="modify">수정</button>
-						<button type="button" id="del" data-id="${book.bookId }">삭제</button>				
+						<button type="button" id="del" data-menu="${menu.coffeId }">삭제</button>				
 					</td>
 				</tr>
 					

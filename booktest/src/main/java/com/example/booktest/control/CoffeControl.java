@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.booktest.DTO.BookDTO;
 import com.example.booktest.DTO.CoffeDto;
 import com.example.booktest.service.CoffeService;
 
@@ -61,10 +62,18 @@ public class CoffeControl {
 	}
 	
 	@GetMapping( "/coffe/delete" )
-	public String menuDel( @RequestParam( "id" ) int id ) {
-		csv.menuDel( id );
+	public String menuDel( @RequestParam( "menu" ) int menu ) {
+		csv.menuDel( menu );
 		
 		return "redirect:/coffe"; 
+	}
+	
+	@GetMapping( "/coffe/update" )
+	public String coffeUpdate( @ModelAttribute CoffeDto coffeDto , @RequestParam( "menu" ) int menu ) {
+		coffeDto.setCoffeId( menu );
+		csv.update( coffeDto );
+		
+		return "redirect:/coffe/view?menu=" + menu;
 	}
 	
 	
