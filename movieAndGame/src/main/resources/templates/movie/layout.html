@@ -1,0 +1,31 @@
+
+<!-- 
+	추후에 추가할 페이지는 아래 형식에서 div#main의 하위에 내용이 추가되기 때문에
+	양식을 만들어서 사용 양식 파일을 복사하고 붙여넣고 div#main에 내용을 추가
+ -->
+
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{movie/default}">
+
+<head>
+
+	<title layout:fragment="title"></title>
+	<!-- 각 페이지의 제목을 서로 다르게 해주기 위해 레이아웃 해줌 -->
+	
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script"></th:block>
+	<!-- 브라우저에 출력되는 페이지에만 적용될 css, js th:block하위에 넣어준다 -->
+	<!-- 모든 페이지에 적용되는 css, js는 dafault.html에 작성 -->
+	
+</head>
+
+	<div layout:fragment="main" id="main">
+		<!-- 이곳의 내용으로 덮어씌워짐 -->
+	
+	</div>
+
+
+</html>

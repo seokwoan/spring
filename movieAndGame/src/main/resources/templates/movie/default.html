@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
 
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title layout:fragment="title">Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -12,10 +14,9 @@
 
 <script src="/js/default.js"></script>
 
-<!-- 템플렛 페이지에서 사용하는 css, js 삽입 영역 -->
-
 <th:block layout:fragment="css"></th:block>
 <th:block layout:fragment="script"></th:block>
+<!-- 템플렛 페이지에서 사용하는 css, js 삽입 영역 -->
 
 </head>
 
@@ -37,26 +38,8 @@
 		
 		<!-- footer 영역 -->
 		<th:block th:replace="movie/footer :: footFrag"></div>
-
+		
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
@@ -72,37 +55,3 @@
 		- 기본 레이아웃 페이지에서 템플릿 페이지가 적용될 수 있는 영역을 설정해야한다
 		
  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

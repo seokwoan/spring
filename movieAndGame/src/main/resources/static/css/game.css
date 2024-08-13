@@ -9,7 +9,7 @@
 ul{
 	list-style : none;
 	display : flex;
-	gap : 15px;
+	gap : 10px;
 }
 
 a{
@@ -18,7 +18,7 @@ a{
 }
 
 #wrap{
-	width : 600px;
+	width : 700px;
 	margin : 0 auto;
 }
 

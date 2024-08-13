@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{movie/default}">
+	
 <head>
 
-<meta charset="UTF-8">
-
-<title>영화 동아리</title>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="/css/default.css">
-
-<script src="/js/default.js"></script>
-
-<script src="/js/join.js"></script>
-
+	<title layout:fragment="title">회원가입</title>
+	
+	<th:block layout:fragment="css">
+		<link rel="stylesheet" href="/css/movie_join.css">
+	</th:block>
+	
+	<th:block layout:fragment="script">
+		<script src="/js/movie_join.js"></script>
+	</th:block>
+	
 </head>
+<!-- 브라우저에 출력되는 페이지에만 적용될 css, js를 th:block하위에 넣어준다 -->
 
-
-<body>
-
-	<div id="wrap">
-	
-		<div id="main"></div>
-	
-		<div id="footer"></div>
-	
+	<div layout:fragment="main" id="main">
+		<form method="post" action="/move.signUp" th:object="${movieMember}">
+		
+			<div id="formData">
+				<div class="inputField">
+					<input type="email" th:field="*{email}">
+					<label th:for="email">이메일</label>
+				</div>	
+				
+				<div class="inputField">	
+					<input type="password" th:field="*{password}">
+					<label th:for="password">비밀번호</label>
+				</div>	
+				
+				<div class="inputField">
+					<input type="password" id="chk">
+					<label th:for="chk">비밀번호 확인</label>
+				</div>	
+					
+				<div class="inputField">	
+					<input type="text" th:field="*{name}">
+					<label th:for="name">이름</label>
+				</div>
+				
+				<div class="inputField">	
+					<input type="text" th:field="*{tel}">
+					<label th:for="tel">연락처</label>
+				</div>	
+					
+				<div class="inputField">
+					<b>생일 년월</b>
+					<select th:field="*{birthYear}"></select>
+					<label th:for="birthYear">년</label>
+					<select th:field="*{birthMonth}"></select>
+					<label th:for="birthMonth">월</label>
+				</div>
+				
+				<button id="JoinBt">SingUp</button>
+					
+			</div>	
+		
+		</form>
+		
 	</div>
-
-
-</body>
 
 
 </html>
