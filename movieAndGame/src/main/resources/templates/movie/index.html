@@ -1,63 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{movie/default}">
 
-<head>
-
-<meta charset="UTF-8">
-
-<title>영화 동아리</title>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="/css/default.css">
-
-<script src="/js/default.js"></script>
-
-</head>
-
-
-<body>
-
-	<div id="wrap">
-	
-		<div id="header">
-		
-			<div id="nav">
-			
-				<ul id="menuList">
-					<li><a href="">상영 영화</a></li>
-					<li><a href="">예정 영화</a></li>
-					<li><a href="">시사회</a></li>
-					<li><a href="/movie/review">생생후기</a></li>
-								
-				</ul>
-				
-				<div id="userALogo">
-					<div class="uesrBox">
-						<span class="loginLink">
-							<a th:href="@{/movie/login}">로그인</a>
-						</span>
-						
-						<span class="userService">고객센터</span>
-						
-					</div>
-
-					<div class="logo"></div>
-				</div>
-			
-			</div>	
-
-		</div>
-	
-		<div id="main"></div>
-	
-		<div id="footer"></div>
+	<div layout:fragment="main" id="main">
+		index.html main 부분
 	
 	</div>
-
-
-</body>
 
 
 </html>

@@ -24,4 +24,9 @@ public class MovieControl {
 		return "movie/member/login";
 	}
 	
+	@GetMapping( "/signUp" )
+	public String signUp( Model model ) {
+		
+		return "movie/member/join";
+	}
 }

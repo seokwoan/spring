@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+	<div th:fragment="headerFrag" id="header">
+	<!-- <th:fragment="fragment이름"> fragment이름을 정해주어야 layout기본 페이지에서 fragment이름을 통해 불러옴 -->
+		
+		<div id="nav">
+		
+			<ul id="menuList">
+				<li><a href="">상영 영화</a></li>
+				<li><a href="">예정 영화</a></li>
+				<li><a href="">시사회</a></li>
+				<li><a href="/movie/review">생생후기</a></li>
+							
+			</ul>
+			
+			<div id="userALogo">
+				<div class="uesrBox">
+					<span class="loginLink">
+						<a th:href="@{/movie/login}">로그인</a>
+					</span>
+					
+					<span class="userService">고객센터</span>
+					
+				</div>
+	
+				<div class="logo"></div>
+			</div>
+		
+		</div>	
+
+	</div>
+
+
+</html>

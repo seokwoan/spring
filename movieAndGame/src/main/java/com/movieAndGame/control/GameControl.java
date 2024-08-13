@@ -13,7 +13,7 @@ import com.movieAndGame.Dto.GameMember;
 public class GameControl {
 	
 	@GetMapping("")
-	public String gameHome() {
+	public String gameHome( Model model ) {
 		return "/game/index";
 	}
 	

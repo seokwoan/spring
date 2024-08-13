@@ -4,9 +4,13 @@
 
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>게임 로그인</title>
 
-<link rel="stylesheet" href="/css/gameLogin.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/game.css">
+
+<script src="/js/game.js"></script>
 
 </head>
 
@@ -14,28 +18,60 @@
 
 	<div id="wrap">
 	
-		<div id="formField">
+		<div id="header">
 		
-			<form method="get" th:action="@{/game/signIn}" th:object="${member}">
+			<div id="nav">
 			
+				<ul id="menuList">
+					<li><a href="">PC게임</a></li>
+					<li><a href="">모바일</a></li>
+					<li><a href="">콘솔</a></li>
+					<li><a href="">MakeByMe</a></li>
+					<li><a href="">불만게임</a></li>
+				</ul>
+				
+				<div id="userALogo">
+					<div class="uesrBox">
+						<span class="loginLink">
+							<a th:href="@{/game/login}">로그인</a>
+						</span>
+						
+						<span class="userService">고객센터</span>
+						
+					</div>
+
+					<div class="logo"></div>
+				</div>
 			
-				<div class="inputField">
-					<input type="text" th:field="*{email}">
-					<label th:for="email">아이디</label><br>
-				</div>	
+			</div>	
+
+		</div>
+	
+		<div id="main">
+		
+			<form method="post" action="/game/signIn" th:object="${member}">
+			
+				<div id="formData">
 				
-				<div class="inputField">	
-					<input type="password" th:field="*{password}">
-					<label th:for="password">비밀번호</label><br>
-				</div>	
+					<div class="inputField">
+						<input type="text" th:field="*{email}">
+						<label th:for="email">아이디</label><br>
+					</div>
+					
+					<div class="inputField">	
+						<input type="password" th:field="*{password}">
+						<label th:for="password">비밀번호</label><br>
+					</div>	
+					
+					<div class="loginBt">
+						<button>로그인</button>
+					</div>
 				
-				<div id="buttonBox">
-					<button>로그인</button>
 				</div>
 				
 			</form>
 			
-			<div id="">
+			<div id="forget_new">
 				<a href="">아이디//비밀번호 찾기</a>
 				<a href="">회원가입</a>
 

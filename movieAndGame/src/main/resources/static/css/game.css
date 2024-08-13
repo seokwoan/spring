@@ -18,8 +18,26 @@ a{
 }
 
 #wrap{
-	width : 1000px;
+	width : 600px;
 	margin : 0 auto;
+}
+
+#formData{
+	display : flex;
+	flex-direction : column;
+	flex-wrap : wrap;
+	height : 60px;
+	justify-content : center;
+}
+
+.inputField{
+	width : 45%;
+	height : 30px;
+}
+
+#buttonBox button{
+	width : 50%;
+	height : 35px;
 }
 
 #nav{
@@ -31,11 +49,11 @@ a{
 }
 
 #menuList{
-	width : 650px;
+	width : 600px;
 }
 
 #userALogo{
-	width : 350px;
+	width : 700px;
 	display : flex;
 }
 
@@ -45,3 +63,12 @@ a{
 	width : 200px;
 	cursor : pointer;
 }
+
+
+
+
+
+
+
+
+
