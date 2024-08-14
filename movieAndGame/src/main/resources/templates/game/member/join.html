@@ -14,7 +14,32 @@
 </head>
 
 	<div id="main" layout:fragment="gameMain">
-		<h2>회원가입!</h2><br>
+		<form method="post" action="/game/signUp" th:object="${gameMember}">
+			<div id="formData">
+				<div id="inputField">
+					<input type="email" th:field="*{email}">
+					<label th:for="email">이메일</label>
+					<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+				</div>			
+		
+				<div id="inputField">
+					<input type="password" th:field="*{password}">
+					<label th:for="password">비밀번호</label>
+					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+				</div>	
+				
+				<div id="inputField">
+					<input type="text" th:field="*{nickName}">
+					<label th:for="nickName">닉네임</label>
+					<p th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}"></p>
+				</div>	
+				
+				<button id="joinBt">회원가입</button>
+	
+			</div>
+			
+		</form>
+		
 	</div>
 
 </html>

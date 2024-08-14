@@ -19,22 +19,30 @@
 <!-- 브라우저에 출력되는 페이지에만 적용될 css, js를 th:block하위에 넣어준다 -->
 
 	<div layout:fragment="main" id="main">
-		<form method="post" action="/move.signUp" th:object="${movieMember}">
+		<form method="post" action="/movie/signUp" th:object="${movieMember}">
 		
 			<div id="formData">
 				<div class="inputField">
 					<input type="email" th:field="*{email}">
 					<label th:for="email">이메일</label>
+					<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError"></p>
 				</div>	
 				
 				<div class="inputField">	
 					<input type="password" th:field="*{password}">
-					<label th:for="password">비밀번호</label>
+					<label th:for="password">
+						비밀번호
+						<b id="pw1"></b>
+					</label>
+					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError"></p>
 				</div>	
 				
 				<div class="inputField">
 					<input type="password" id="chk">
-					<label th:for="chk">비밀번호 확인</label>
+					<label th:for="chk">
+						비밀번호 확인
+						<b id="pw2"></b>
+					</label>
 				</div>	
 					
 				<div class="inputField">	
@@ -45,6 +53,7 @@
 				<div class="inputField">	
 					<input type="text" th:field="*{tel}">
 					<label th:for="tel">연락처</label>
+					<p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="fieldError"></p>
 				</div>	
 					
 				<div class="inputField">
@@ -55,7 +64,7 @@
 					<label th:for="birthMonth">월</label>
 				</div>
 				
-				<button id="JoinBt">SingUp</button>
+				<button id="joinBt">SingUp</button>
 					
 			</div>	
 		

@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+*{
+	padding : 0;
+	margin : 0;
+	box-sizing : border-box;
+}
+
+#wrap{
+	width : 400px;
+	margin : 50px auto;
+}
+
+#main form{
+	display : flex;
+	flex-direction : column;
+	flex-wrap : wrap;
+	height : 60px;
+	justify-content : center;
+}
+
+.inputField{
+	width : 65%;
+	height : 30px;
+}
+
+#buttonBox button{
+	width : 50%;
+	height : 35px;
+}
+
+#nav{
+	padding : 20px 0;
+	position : sticky;
+	top : 0;
+	display : flex;
+	align-items : center;
+}
+
+#menuList{
+	width : 650px;
+}
+
+#userALogo{
+	width : 350px;
+	display : flex;
+}
+
+#userALogo .logo{
+	background : url(/image/logo.jpg) no-repeat center;
+	background-size : contain;
+	width : 200px;
+	cursor : pointer;
+}
+
+
+
+
+
+
+
+
+

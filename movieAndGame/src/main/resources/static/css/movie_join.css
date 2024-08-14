@@ -54,7 +54,7 @@
 	border-color : black;
 }
 
-#JoinBt{
+#joinBt{
 	border : zero;;
 	background-color : black;
 	color : white;
@@ -65,4 +65,9 @@
 	border-radius : 10px;
 	margin: 0;
 	display : block;
+}
+
+.fieldError{
+	color : red;
+	padding-top : 7px;
 }
