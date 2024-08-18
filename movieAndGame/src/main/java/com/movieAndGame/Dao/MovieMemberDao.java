@@ -1,5 +1,7 @@
 package com.movieAndGame.Dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.movieAndGame.Dto.MovieMember;
@@ -9,4 +11,7 @@ public interface MovieMemberDao { // 마이바티스를 이용해 데이터베�
 								  // 마이바티스를 사용할 인터페이스는 @Mapper 애노테이션을 넣어준다
 
 	public int insert( MovieMember movieMember ); // 회원가입을 위한 데이터 저장
+	public List<String> findAllEmail();
+	public MovieMember login(MovieMember movieMember);// 로그인 처리
+	
 }

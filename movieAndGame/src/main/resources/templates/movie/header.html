@@ -17,7 +17,12 @@
 			<div id="userALogo">
 				<div class="uesrBox">
 					<span class="loginLink">
-						<a th:href="@{/movie/login}">로그인</a>
+						<th:block th:if="${session.user != null}">
+							<b th:text="${#session.getAttribute('user').name}"></b>
+							<a href="/movie/logout">로그아웃</a>
+						</th:block>
+							
+						<a th:unless="${session.user != null}" th:href="@{/movie/login}">로그인</a>
 					</span>
 					
 					<span class="userService">고객센터</span>

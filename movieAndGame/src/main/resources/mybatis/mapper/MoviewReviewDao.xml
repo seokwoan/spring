@@ -9,16 +9,4 @@
 			values( #{email} , #{password} , #{name} , #{birthYear} , #{birthMonth} , #{tel} )
 	</insert>
 	
-	<select id="login" resultType="com.movieAndgame.Dto.MovieMember"
-		parameterType="com.movieAndgame.Dto.MovieMember">
-			select email, name, tel, birth_year, birth_month  
-			from movie_member
-			where email=#{email} and password=#{password}
-
-	</select>
-	
-	<select id="findAllEmail" resultType="java.lang.String">
-		select email from movie_member;
-	</select>
-	
 </mapper>

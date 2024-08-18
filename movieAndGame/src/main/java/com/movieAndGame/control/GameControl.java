@@ -1,5 +1,7 @@
 package com.movieAndGame.control;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndGame.Dto.GameMember;
-import com.movieAndGame.Dto.MovieMember;
 import com.movieAndGame.service.GameMemberService;
+import com.movieAndGame.Dto.GameMemberLogin;
 
 
 @Controller
@@ -30,10 +32,11 @@ public class GameControl {
 	
 	// 로그인 페이지
 	@GetMapping( "/login" )
-	public String gameLogin( Model model ) {
+	public String login( Model model , HttpServletRequest request ) {
 		
-		model.addAttribute( "member" , new GameMember() );
-		
+		String preUri = request.getHeader("Referer");// 로그인 이전 페이지
+		request.getSession().setAttribute("preUri", preUri);
+		model.addAttribute("gameMemberLogin" , new GameMemberLogin());		
 		return "game/member/login";
 	}
 	
@@ -60,4 +63,21 @@ public class GameControl {
 		return "redirect:/game/login";
 	}
 	
+	//로그인
+		@PostMapping("/signIn")
+		public String signIn(@Valid GameMemberLogin gameMemberLogin,
+				BindingResult bind , Model model , HttpSession session) {
+			
+			GameMember user = gameMemberService.login(gameMemberLogin);
+			if(user == null) {
+				bind.rejectValue("password","error.password","이메일 또는 비밀번호가 잘못 되었습니다.");
+			}
+			if(bind.hasErrors())
+				return "game/member/login";
+			
+			// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
+			String preUri = (String)session.getAttribute("preUri");
+			session.setAttribute("user", user);
+			return "redirect:"+preUri;//"redirect:/game/index";
+		}
 }

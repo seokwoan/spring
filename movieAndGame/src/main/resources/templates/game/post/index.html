@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{game/basic}">
+	
+<head>
+
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script"></th:block>
+	
+</head>	
+
+	<div layout:fragment="main" id="main">
+		<div id="section_top">
+			<h3>모바일 게임 공략 </h3>
+			
+			<p> 
+				<a href="/gamePost/write"> 리뷰 작성 </a>
+			</p>
+			
+		</div>			
+				
+		<div id="section_middle">
+			<table id="reviewList">
+			</table>
+			
+		</div>		
+		
+		<div id="section_bottom">
+			<div id="searchBox">
+			</div>
+			
+		</div>	
+		
+	</div>
+
+</html>

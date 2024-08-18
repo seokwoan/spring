@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#main{
+	width:100%;
+	padding:50px 100px 150px 100px;
+}
+
+#section_top{
+	text-align:center;
+}
+
+#section_top p{
+	padding:20px;
+	text-align:right;
+}
+
+#section_top p a:hover{
+	color:blue;
+}
+
+#section_middle{ 
+	padding:20px 0;
+}
+
+#reviewList{
+	width:700px;
+	margin:0 auto;
+	border-collapse: collapse;
+}
