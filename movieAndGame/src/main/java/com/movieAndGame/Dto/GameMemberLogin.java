@@ -16,4 +16,5 @@ public class GameMemberLogin {
 	@Size(min=6, max=12, message="비밀번호는 6~12자리입니다.")
 	@Pattern(regexp="^[a-z0-9]*$", message="영어소문자와 숫자만 가능합니다.")
 	private String password;
+
 }

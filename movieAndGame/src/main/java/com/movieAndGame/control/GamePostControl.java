@@ -1,5 +1,7 @@
 package com.movieAndGame.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -25,6 +27,10 @@ public class GamePostControl {
 	
 	@GetMapping("/m")
 	public String index(Model model) {
+		
+		List<GamePostDto> list = gamePostService.list();
+		model.addAttribute( "list" , list );
+		
 		return "game/post/index";
 	}
 	
@@ -35,7 +41,7 @@ public class GamePostControl {
 		}
 		
 		GamePostDto dto = new GamePostDto();		
-		String name = ( (GameMember)session.getAttribute("user") ).getNickName();
+		String name = ((GameMember)session.getAttribute("user")).getNickName();
 		dto.setWriter(name);
 		
 		model.addAttribute("gamePostDto",dto);

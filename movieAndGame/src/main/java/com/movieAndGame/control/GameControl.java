@@ -64,20 +64,26 @@ public class GameControl {
 	}
 	
 	//로그인
-		@PostMapping("/signIn")
-		public String signIn(@Valid GameMemberLogin gameMemberLogin,
-				BindingResult bind , Model model , HttpSession session) {
-			
-			GameMember user = gameMemberService.login(gameMemberLogin);
-			if(user == null) {
-				bind.rejectValue("password","error.password","이메일 또는 비밀번호가 잘못 되었습니다.");
-			}
-			if(bind.hasErrors())
-				return "game/member/login";
-			
-			// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
-			String preUri = (String)session.getAttribute("preUri");
-			session.setAttribute("user", user);
-			return "redirect:"+preUri;//"redirect:/game/index";
+	@PostMapping("/signIn")
+	public String signIn(@Valid GameMemberLogin gameMemberLogin,
+			BindingResult bind , Model model , HttpSession session) {
+		
+		GameMember user = gameMemberService.login(gameMemberLogin);
+		if(user == null) {
+			bind.rejectValue("password","error.password","이메일 또는 비밀번호가 잘못 되었습니다.");
 		}
+		if(bind.hasErrors())
+			return "game/member/login";
+		
+		// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
+		String preUri = (String)session.getAttribute("preUri");
+		session.setAttribute("user", user);
+		return "redirect:"+preUri;//"redirect:/game/index";
+	}
+	
+	@GetMapping("/logout")
+	public String out(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/game";
+	}
 }

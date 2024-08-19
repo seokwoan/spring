@@ -1,5 +1,7 @@
 package com.movieAndGame.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.movieAndGame.Dto.MovieMember;
@@ -33,10 +36,12 @@ public class MovieMenuControl {
 		return "redirect:/movieMenu/review";
 	}
 	
-	
+	// 리뷰 첫페이지( 리뷰 목록 )
 	@GetMapping("/review")
 	public String reviewMain(Model model) {
 		
+		List<MovieReviewDto> list = reviewService.reviewList();
+		model.addAttribute( "reviewList" , list );
 		
 		return "movie/review/index";
 	}
@@ -57,4 +62,35 @@ public class MovieMenuControl {
 		
 		return "movie/review/write";
 	}
+	
+	@GetMapping( "/view/{id}" ) // @PathVariable을 통해 주소의 {id}의 값을 가져온다
+	public String view( @PathVariable int id, Model model ) {
+		
+		return "movie/review/detail";
+	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

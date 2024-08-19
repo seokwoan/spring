@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{game/basic}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{game/gameDefault}">
 	
 <head>
 
@@ -11,7 +10,7 @@
 	
 </head>	
 
-	<div layout:fragment="main" id="main">
+	<div layout:fragment="gameMain" id="main">
 		<div id="section_top">
 			<h3>모바일 게임 공략 </h3>
 			
@@ -23,6 +22,19 @@
 				
 		<div id="section_middle">
 			<table id="reviewList">
+				<tr>
+					<td class="num">번호</td>
+					<td class="title">제목</td>
+					<td class="date">작성일</td>				
+				</tr>
+				
+				<!-- th:each="변수 : ${배열 또는 컬렉션}" 동작-> ${}의 0인덱스 값부터 변수에 하나씩 저장된다 -->
+				<tr th:each="row : ${list}">
+					<td class="num" th:text="${row.post_id}"></td>
+					<td class="title"><a th:href="@{'/gamePost/m/' + ${row.post_id}}" th:text="${row.title}"></a></td>
+					<td class="date" th:text="${#temporals.format( row.write_date , 'yyyy-MM-dd' )}"></td>				
+				</tr>
+			
 			</table>
 			
 		</div>		
@@ -36,3 +48,10 @@
 	</div>
 
 </html>
+
+
+
+
+
+
+

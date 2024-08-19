@@ -14,7 +14,7 @@ public class GameMember {
 	@Email( message="이메일을 확인하세요" )
 	private String email;
 	
-	@Size( min=5 , max=13 , message="비밀번호는 5~13자리로 입력하세요" )
+	@Size( min = 6, max = 12, message = "비밀번호는 6~12자리입니다." )
 	@Pattern( regexp="^[a-zA-Z0-9]*$" , message="비밀번호는 영어 대소문자와 숫자만 입력하세요" )
 	private String password;
 	

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class GamePostDto {
 	
-	private int postId;
+	private int post_id;
 	private String writer;
 	@NotBlank(message="제목은 필수입니다.")
 	private String title;
@@ -19,6 +19,6 @@ public class GamePostDto {
 	private String gameName;
 	@NotBlank(message="내용은 필수입니다.")
 	private String targetPost;
-	private LocalDateTime writeDate;
+	private LocalDateTime write_date;
 
 }

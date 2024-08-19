@@ -2,12 +2,16 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.movieAndgame.Dao.GamePostDaoImpl">
+<mapper namespace="com.movieAndGame.Dao.GamePostDaoImpl">
 
-	<insert id="save" parameterType="com.movieAndgame.Dto.GamePostDto">
-		insert into game_post(writer, title, game_name, target_post,write_date)
+	<insert id="save" parameterType="com.movieAndGame.Dto.GamePostDto">
+		insert into game_post(title, writer, game_name, target_post,write_date)
 		values
-		(#{writer}, #{title}, #{gameName}, ${targetPost} , now())
+		(#{title}, #{writer}, #{gameName}, ${targetPost} , now())
 	</insert>
+	
+	<select id="findAll" resultType="com.movieAndGame.Dto.GamePostDto">
+		select * from game_post order by write_date desc
+	</select>
 	
 </mapper>

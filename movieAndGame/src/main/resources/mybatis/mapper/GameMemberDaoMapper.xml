@@ -2,20 +2,19 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.movieAndgame.Dao.MovieReviewDaoImpl">
+<mapper namespace="com.movieAndGame.Dao.GameMemberDao">
 
-	<insert id="reviewSave" parameterType="com.movieAndgame.Dto.MovieReviewDto">
-		insert into movie_review(writer, title, content, write_date)
-		values
-		(#{writer}, #{title}, #{content} , now())
-	
-	</insert>
-	
-	<select id="login" resultType="com.movieAndgame.Dto.GameMemberDto"
-		parameterType="com.movieAndgame.Dto.GameMemberLogin">
+	<select id="login" resultType="com.movieAndGame.Dto.GameMember"
+		parameterType="com.movieAndGame.Dto.GameMemberLogin">
 			select email, nick_name 
 			from game_member
 			where email=#{email} and password=#{password}	
 	</select>
+
+
+	<insert id="insert" parameterType="com.movieAndGame.Dto.GameMember">
+		insert into game_member(email, nick_name, password) 
+			values( #{email}, #{nickName}, #{password} )
+	</insert>
 
 </mapper>

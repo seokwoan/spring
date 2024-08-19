@@ -73,29 +73,29 @@ public class MovieControl {
 	}
 	
 	// 로그인 처리 요청
-		@PostMapping("/signIn")
-		public String signIn(  MovieMember member, HttpSession session
-				,Model model) {
-			// 로그인 처리 - 데이터베이스에 이메일과 비번이 일치하는지 확인하고
-			// 일치하면 세션 만들고 첫페이지로 이동 , 일치하지않으면 로그인 페이지로 돌려보내기
-			
-			MovieMember user = movieMemberService.login(member);
-			if(user==null) { // 로그인 실패(이메일또는 비번 잘못)
-				model.addAttribute("member",member);
-				model.addAttribute("fail","a");    
-				return "movie/member/login";
-			}
-			// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
-			String preUri = (String)session.getAttribute("preUri");
-			session.setAttribute("user", user);
-			return "redirect:"+preUri;//"redirect:/game/index";
-		}
+	@PostMapping("/signIn")
+	public String signIn(  MovieMember member, HttpSession session
+			,Model model) {
+		// 로그인 처리 - 데이터베이스에 이메일과 비번이 일치하는지 확인하고
+		// 일치하면 세션 만들고 첫페이지로 이동 , 일치하지않으면 로그인 페이지로 돌려보내기
 		
-		
-		@GetMapping("/logout")
-		public String out(HttpSession session) {
-			session.removeAttribute("user");
-			return "redirect:/movie/index";
+		MovieMember user = movieMemberService.login(member);
+		if(user==null) { // 로그인 실패(이메일또는 비번 잘못)
+			model.addAttribute("member",member);
+			model.addAttribute("fail","a");    
+			return "movie/member/login";
 		}
+		// 로그인 성공시 로그인 화면 이전 방문 페이지 이동
+		String preUri = (String)session.getAttribute("preUri");
+		session.setAttribute("user", user);
+		return "redirect:"+preUri;//"redirect:/game/index";
+	}
+	
+	
+	@GetMapping("/logout")
+	public String out(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/movie/index";
+	}
 	
 }

@@ -9,8 +9,8 @@
 			values( #{email} , #{password} , #{name} , #{birthYear} , #{birthMonth} , #{tel} )
 	</insert>
 	
-	<select id="login" resultType="com.movieAndgame.Dto.MovieMember"
-		parameterType="com.movieAndgame.Dto.MovieMember">
+	<select id="login" resultType="com.movieAndGame.Dto.MovieMember"
+		parameterType="com.movieAndGame.Dto.MovieMember">
 			select email, name, tel, birth_year, birth_month  
 			from movie_member
 			where email=#{email} and password=#{password}

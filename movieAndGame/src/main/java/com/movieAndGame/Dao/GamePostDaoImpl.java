@@ -1,5 +1,7 @@
 package com.movieAndGame.Dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.movieAndGame.Dto.GamePostDto;
@@ -8,5 +10,7 @@ import com.movieAndGame.Dto.GamePostDto;
 public interface GamePostDaoImpl {
 
 	public int save(GamePostDto gamePostDto);
+
+	public List<GamePostDto> findAll();
 
 }
