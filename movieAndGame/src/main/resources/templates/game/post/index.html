@@ -15,7 +15,7 @@
 			<h3>모바일 게임 공략 </h3>
 			
 			<p> 
-				<a href="/gamePost/write"> 리뷰 작성 </a>
+				<a href="/gamePost/write"> 공략 작성 </a>
 			</p>
 			
 		</div>			
@@ -31,7 +31,7 @@
 				<!-- th:each="변수 : ${배열 또는 컬렉션}" 동작-> ${}의 0인덱스 값부터 변수에 하나씩 저장된다 -->
 				<tr th:each="row : ${list}">
 					<td class="num" th:text="${row.post_id}"></td>
-					<td class="title"><a th:href="@{'/gamePost/m/' + ${row.post_id}}" th:text="${row.title}"></a></td>
+					<td class="title"><a th:href="@{'/gamePost/view/' + ${row.post_id}}" th:text="${row.title}"></a></td>
 					<td class="date" th:text="${#temporals.format( row.write_date , 'yyyy-MM-dd' )}"></td>				
 				</tr>
 			

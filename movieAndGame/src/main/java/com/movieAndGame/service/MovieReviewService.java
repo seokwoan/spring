@@ -22,4 +22,8 @@ public class MovieReviewService {
 	public List<MovieReviewDto> reviewList(){
 		return movieReviewDao.findAll();
 	}
+
+	public MovieReviewDto finfById(int id) {
+		return movieReviewDao.findById( id );
+	}
 }

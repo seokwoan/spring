@@ -19,7 +19,7 @@ public class GameMember {
 	private String password;
 	
 	@Pattern( regexp="^[a-z]*$" , message="닉네임은 영어 소문자만 입력하세요" )
-	private String nickName;
+	private String nick_name;
 
 }
 

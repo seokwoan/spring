@@ -19,7 +19,7 @@
 					<span class="loginLink">
 					
 						<th:block th:if="${session.user != null}">
-							<b th:text="${#session.getAttribute('user').nickName}"></b>
+							<b th:text="${#session.getAttribute('user').nick_name}"></b>
 							<a href="/game/logout">로그아웃</a>
 						</th:block>
 						

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{game/gameDefault}">
+	
+<head>
+
+<title layout:fragment="title">Insert title here</title>
+
+</head>
+	
+	<div id="main" layout:fragment="gameMain">
+	
+		<table th:object="${gamePostDto}">
+			<tr>
+				<td>번호</td>
+				<td th:text="*{post_id}"></td>
+			</tr>
+			
+			<tr>
+				<td>작성자</td>
+				<td th:text="*{writer}"></td>
+			</tr>
+			
+			<tr>
+				<td>제목</td><td th:text="*{title}"></td>			
+			</tr>
+			
+			<tr>
+				<td>게임이름</td><td th:text="*{game_name}"></td>			
+			</tr>
+			
+			<tr>
+				<td>내용</td>
+				<td th:text="*{target_post}"></td>
+			</tr>
+			
+			<tr>
+				<td>작성일</td>
+				<td th:text="*{#temporals.format(write_date , 'yy-MM-dd')}"></td>
+			</tr>
+			
+			
+		</table>
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+</html>

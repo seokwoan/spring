@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 public class MovieReviewDto {
 
-private int review_id;
+	private int review_id;
 	
 	@NotBlank(message="제목은 꼭입력하세요")
 	private String title;

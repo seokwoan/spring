@@ -7,11 +7,15 @@
 	<insert id="save" parameterType="com.movieAndGame.Dto.GamePostDto">
 		insert into game_post(title, writer, game_name, target_post,write_date)
 		values
-		(#{title}, #{writer}, #{gameName}, ${targetPost} , now())
+		(#{title}, #{writer}, #{game_name}, #{target_post} , now())
 	</insert>
 	
 	<select id="findAll" resultType="com.movieAndGame.Dto.GamePostDto">
 		select * from game_post order by write_date desc
+	</select>
+	
+	<select id="findById" resultType="com.movieAndGame.Dto.GamePostDto">
+		select * from game_post where post_id=#{id}
 	</select>
 	
 </mapper>

@@ -63,34 +63,15 @@ public class MovieMenuControl {
 		return "movie/review/write";
 	}
 	
-	@GetMapping( "/view/{id}" ) // @PathVariable을 통해 주소의 {id}의 값을 가져온다
+	@GetMapping( "/view/{id}" ) 
+	// @PathVariable을 통해 주소의 {id}의 값을 가져온다 주소의{?}값과 @pathvariable의 변수명과 같아야한다
+	// @PathVariable은 하나의 값만 받을 수 있다
 	public String view( @PathVariable int id, Model model ) {
+		
+		MovieReviewDto dto = reviewService.finfById( id );
+		model.addAttribute( "movieReviewDto" , dto );
 		
 		return "movie/review/detail";
 	}
 	
-	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

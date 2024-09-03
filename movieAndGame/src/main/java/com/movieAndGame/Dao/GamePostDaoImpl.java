@@ -13,4 +13,6 @@ public interface GamePostDaoImpl {
 
 	public List<GamePostDto> findAll();
 
+	public GamePostDto findById(int id);
+
 }

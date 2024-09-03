@@ -25,4 +25,10 @@ public class GamePostService {
 		return gamePostDaoImpl.findAll() ;
 	}
 
+	public GamePostDto findById(int id) {
+		return gamePostDaoImpl.findById( id );
+	}
+
+
+
 }

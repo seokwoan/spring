@@ -15,4 +15,9 @@
 		select * from movie_review order by write_date desc
 	</select>
 	
+	
+	<select id="findById" resultType="com.movieAndGame.Dto.MovieReviewDto">
+		select * from movie_review where review_id=#{id}
+	</select>
+	
 </mapper>
